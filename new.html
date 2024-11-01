@@ -1,44 +1,103 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/night.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/monokai.min.css"
+    />
+    <style></style>
+  </head>
 
-<head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/night.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/monokai.min.css">
-  <style>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h3>MongoDB</h3>
+          <p>NoSQL Database</p>
+        </section>
 
-  </style>
-</head>
+        <section>
+          <h3>SQL vs NoSQL Databases</h3>
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align: center">SQL</th>
+                <th style="text-align: center">NoSQL</th>
+              </tr>
+            </thead>
+            <tbody style="font-size: 21.5px">
+              <tr>
+                <td>Stands for Structured Query Language</td>
+                <td>Stands for Not Only SQL</td>
+              </tr>
+              <tr>
+                <td>Relational database management system (RDBMS)</td>
+                <td>Non-relational database management system</td>
+              </tr>
+              <tr>
+                <td>Suitable for structured data with predefined schema</td>
+                <td>Suitable for unstructured and semi-structured data</td>
+              </tr>
+              <tr>
+                <td>Data is stored in tables with columns and rows</td>
+                <td>Data is stored in collections or documents</td>
+              </tr>
+              <tr>
+                <td>
+                  Follows ACID properties (Atomicity, Consistency, Isolation, Durability) for
+                  transaction management
+                </td>
+                <td>Does not necessarily follow ACID properties</td>
+              </tr>
+              <tr>
+                <td>Supports JOIN and complex queries</td>
+                <td>Does not support JOIN and complex queries</td>
+              </tr>
+              <tr>
+                <td>Uses normalized data structure</td>
+                <td>Uses denormalized data structure</td>
+              </tr>
+              <tr>
+                <td>Requires vertical scaling to handle large volumes of data</td>
+                <td>Horizontal scaling is possible to handle large volumes of data</td>
+              </tr>
+              <tr>
+                <td>Examples: MySQL, PostgreSQL, Oracle, SQL Server, Microsoft SQL Server</td>
+                <td>Examples: MongoDB, Cassandra, Couchbase, Amazon DynamoDB, Redis</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
 
-<body>
-  <div class="reveal">
-    <div class="slides">
-            <section>
-                <h3>MongoDB</h3>
-                <p>NoSQL Database</p>
-            </section>
-            
-            <section>
-                <h3>What is MongoDB?</h3>
-                <ul>
-                    <li><strong>Document Database</strong></li>
-                    <li>Stores data in flexible, JSON-like documents</li>
-                    <li>Part of the NoSQL database family</li>
-                </ul>
-            </section>
-            
-            <section>
-                <section>
-                    <h3>Key Concepts: Documents</h3>
-                    <h3>🗂️ What is a Document?</h3>
-                    <ul>
-                        <li>A record in MongoDB</li>
-                        <li>Stored in BSON (Binary JSON) format</li>
-                        <li>Equivalent to a row in relational databases</li>
-                    </ul>
-                </section>
-                <section>
-                    <pre><code class="language-javascript" data-trim>
+        <section>
+          <h3>What is MongoDB?</h3>
+          <ul>
+            <li><strong>Document Database</strong></li>
+            <li>Stores data in flexible, JSON-like documents</li>
+            <li>Part of the NoSQL database family</li>
+          </ul>
+        </section>
+
+        <section>
+          <section>
+            <h3>Key Concepts: Documents</h3>
+            <h3>🗂️ What is a Document?</h3>
+            <ul>
+              <li>A record in MongoDB</li>
+              <li>Stored in BSON (Binary JSON) format</li>
+              <li>Equivalent to a row in relational databases</li>
+            </ul>
+          </section>
+          <section>
+            <pre><code class="language-javascript" data-trim>
 {
   _id: ObjectId("5099803df3f4948bd2f98391"),
   name: "John Doe",
@@ -55,57 +114,75 @@
   }
 }
                     </code></pre>
-                </section>
-            </section>
-            
-            <section>
-                <section>
-                    <h3>Key Concepts: Collections</h3>
-                    <h3>📚 What is a Collection?</h3>
-                    <ul>
-                        <li>Group of related documents</li>
-                        <li>Similar to a table in relational databases</li>
-                        <li>Can contain documents with different structures</li>
-                    </ul>
-                </section>
-                <section>
-                    <pre><code class="language-javascript" data-trim>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Key Concepts: Collections</h3>
+            <h3>📚 What is a Collection?</h3>
+            <ul>
+              <li>Group of related documents</li>
+              <li>Similar to a table in relational databases</li>
+              <li>Can contain documents with different structures</li>
+            </ul>
+          </section>
+          <section>
+            <pre><code class="language-javascript" data-trim>
 // Users Collection
 db.users.insertMany([
   { name: "Alice", role: "Developer" },
   { name: "Bob", department: "Marketing" }
 ])
                     </code></pre>
-                </section>
-            </section>
-            
-            <section>
-                <h3>SQL vs MongoDB: Terminology Comparison</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>SQL Concept</th>
-                            <th>MongoDB Equivalent</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Database</td><td>Database</td></tr>
-                        <tr><td>Table</td><td>Collection</td></tr>
-                        <tr><td>Row</td><td>Document</td></tr>
-                        <tr><td>Column</td><td>Field</td></tr>
-                        <tr><td>Join</td><td>$lookup / Embedding</td></tr>
-                        <tr><td>Primary Key</td><td>_id Field</td></tr>
-                    </tbody>
-                </table>
-            </section>
-            
-            <section>
-                <section>
-                    <h3>CRUD Operations Breakdown</h3>
-                    <h3>Create Operations</h3>
-                </section>
-                <section>
-                    <pre><code class="language-javascript" data-trim>
+          </section>
+        </section>
+
+        <section>
+          <h3>SQL vs MongoDB: Terminology Comparison</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>SQL Concept</th>
+                <th>MongoDB Equivalent</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Database</td>
+                <td>Database</td>
+              </tr>
+              <tr>
+                <td>Table</td>
+                <td>Collection</td>
+              </tr>
+              <tr>
+                <td>Row</td>
+                <td>Document</td>
+              </tr>
+              <tr>
+                <td>Column</td>
+                <td>Field</td>
+              </tr>
+              <tr>
+                <td>Join</td>
+                <td>$lookup / Embedding</td>
+              </tr>
+              <tr>
+                <td>Primary Key</td>
+                <td>_id Field</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <section>
+            <h3>CRUD Operations Breakdown</h3>
+            <h3>Create Operations</h3>
+          </section>
+          <section>
+            <pre><code class="language-javascript" data-trim>
 // Insert a single document
 db.users.insertOne({
   name: "John Doe",
@@ -119,15 +196,15 @@ db.users.insertMany([
   { name: "Bob", age: 35 }
 ])
                     </code></pre>
-                </section>
-            </section>
-            
-            <section>
-                <section>
-                    <h3>Read Operations</h3>
-                </section>
-                <section>
-                    <pre><code class="language-javascript" data-trim>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Read Operations</h3>
+          </section>
+          <section>
+            <pre><code class="language-javascript" data-trim>
 // Find all users
 db.users.find()
 
@@ -137,15 +214,15 @@ db.users.findOne({ name: "John Doe" })
 // Find users with conditions
 db.users.find({ age: { $gt: 25 } })
                     </code></pre>
-                </section>
-            </section>
-            
-            <section>
-                <section>
-                    <h3>Update Operations</h3>
-                </section>
-                <section>
-                    <pre><code class="language-javascript" data-trim>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Update Operations</h3>
+          </section>
+          <section>
+            <pre><code class="language-javascript" data-trim>
 // Update one user
 db.users.updateOne(
   { name: "John Doe" },
@@ -158,42 +235,42 @@ db.users.updateMany(
   { $inc: { age: 1 } }
 )
                     </code></pre>
-                </section>
-            </section>
-            
-            <section>
-                <section>
-                    <h3>Delete Operations</h3>
-                </section>
-                <section>
-                    <pre><code class="language-javascript" data-trim>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Delete Operations</h3>
+          </section>
+          <section>
+            <pre><code class="language-javascript" data-trim>
 // Delete one user
 db.users.deleteOne({ name: "John Doe" })
 
 // Delete multiple users
 db.users.deleteMany({ age: { $lt: 25 } })
                     </code></pre>
-                </section>
-            </section>
-            
-            <section>
-                <h3>Special Query Operators</h3>
-                <h3>Comparison Operators</h3>
-                <ul>
-                    <li>`$eq`: Equal to</li>
-                    <li>`$gt`: Greater than</li>
-                    <li>`$lt`: Less than</li>
-                    <li>`$gte`: Greater than or equal to</li>
-                    <li>`$lte`: Less than or equal to</li>
-                </ul>
-            </section>
-            
-            <section>
-                <section>
-                    <h3>Advanced Querying</h3>
-                </section>
-                <section>
-                    <pre><code class="language-javascript" data-trim>
+          </section>
+        </section>
+
+        <section>
+          <h3>Special Query Operators</h3>
+          <h3>Comparison Operators</h3>
+          <ul>
+            <li>`$eq`: Equal to</li>
+            <li>`$gt`: Greater than</li>
+            <li>`$lt`: Less than</li>
+            <li>`$gte`: Greater than or equal to</li>
+            <li>`$lte`: Less than or equal to</li>
+          </ul>
+        </section>
+
+        <section>
+          <section>
+            <h3>Advanced Querying</h3>
+          </section>
+          <section>
+            <pre><code class="language-javascript" data-trim>
 // Logical AND
 db.users.find({
   $and: [
@@ -207,37 +284,36 @@ db.users.find()
   .sort({ age: -1 })  // Sort by age descending
   .limit(5)           // Limit to 5 results
                     </code></pre>
-                </section>
-            </section>
-            
-            <section>
-                <section>
-                    <h3>Getting Started</h3>
-                    <ol>
-                        <li>Install MongoDB</li>
-                        <li>Install a driver (e.g., Mongoose for Node.js)</li>
-                        <li>Connect to your database</li>
-                        <li>Start building your application!</li>
-                    </ol>
-                </section>
-            </section>
-            </div>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Getting Started</h3>
+            <ol>
+              <li>Install MongoDB</li>
+              <li>Install a driver (e.g., Mongoose for Node.js)</li>
+              <li>Connect to your database</li>
+              <li>Start building your application!</li>
+            </ol>
+          </section>
+        </section>
+      </div>
     </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.min.js"></script>
-  <script>
-    Reveal.initialize({
-      hash: true,
-      slideNumber: true,
-      transition: 'slide',
-      plugins: [RevealHighlight, RevealNotes],
-      highlight: {
-        theme: 'monokai'
-      }
-    });
-  </script>
-</body>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.min.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        slideNumber: true,
+        transition: 'slide',
+        plugins: [RevealHighlight, RevealNotes],
+        highlight: {
+          theme: 'monokai',
+        },
+      });
+    </script>
+  </body>
 </html>
